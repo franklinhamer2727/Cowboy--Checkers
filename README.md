@@ -9,9 +9,9 @@ Cowbot checkers es un antiguo juego de mesa de estrategia. ¡Coloca tus piezas e
 - ![Oracle java Archive](https://www.oracle.com/java/technologies/java-archive.html), el JDK es un entorno de desarrollo para crear aplicaciones utilizando el lenguaje de programación Java.
 - El JDK incluye herramientas útiles para desarrollar y probar programas escritos en el lenguaje de programación Java y que se ejecutan en la plataforma JavaTM.
 
-##Contribuyendo
+# Contribuyendo
 Cowbot Checkers es un proyecto para el uso y disposición libre con el fin de contribuir a la recreación y fortalecimiento de  habilidades de razonamiento
 
 
-##Integrantes
+# Integrantes
 El desarrollo de Cowbot Checkers está dirigido por un equipo de desarrollo de software de la universidad nacional de ingeniería
