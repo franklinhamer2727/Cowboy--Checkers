@@ -1,11 +1,11 @@
 package cowboycheckers.modelo;
 
-import cowboycheckers.vistas.TableroJuego.GamePanel;
+import cowboycheckers.vistas.tableroJuego.GamePanel;
 
 public class Movimiento {
-	private Localizacion origin;
-	private Localizacion dest;
-	
+	private Localizacion origen;
+	private Localizacion destino;
+
 	private float x1;
 	private float y1;
 	private float x2;
@@ -14,10 +14,10 @@ public class Movimiento {
 	private float curY;
 	private float dx;
 	private float dy;
-	
+
 	public Movimiento(Localizacion A, Localizacion B){
-		this.origin = A;
-		this.setDest(B);
+		this.origen = A;
+		this.setDestino(B);
 		this.convToCart(A);
 		this.convToCart(B);
 		this.calcChange();
@@ -33,12 +33,12 @@ public class Movimiento {
 				found = i;
 			}
 		}
-		
+
 		String t[] = points[found].split(",");
 		int row = Integer.parseInt(t[0]);
 		int col = Integer.parseInt(t[1]);
-		
-		if(loc == this.origin){
+
+		if(loc == this.origen){
 			this.x1 = col * GamePanel.CELL_SIZE+25;
 			this.y1 = row * GamePanel.CELL_SIZE+25;
 			this.curX = this.x1;
@@ -48,7 +48,7 @@ public class Movimiento {
 			this.x2 = col * GamePanel.CELL_SIZE+25;
 			this.y2 = row * GamePanel.CELL_SIZE+25;
 		}
-		
+
 	}
 
 	private void calcChange() {
@@ -71,11 +71,11 @@ public class Movimiento {
 	public void setCurY(int curY) {
 		this.curY = curY;
 	}
-	
+
 	public boolean update(){
 		this.curX += this.dx;
 		this.curY += this.dy;
-		
+
 		if(this.dx < 0){
 			if(this.curX < this.x2)
 				return true;
@@ -83,7 +83,7 @@ public class Movimiento {
 		else if(this.dx > 0)
 			if(this.curX > this.x2)
 				return true;
-		
+
 		if(this.dy < 0){
 			if(this.curY < this.y2)
 				return true;
@@ -91,16 +91,16 @@ public class Movimiento {
 		else if(this.dy > 0)
 			if(this.curY > this.y2)
 				return true;
-		
-		return false;	
+
+		return false;
 	}
 
-	public Localizacion getDest() {
-		return dest;
+	public Localizacion getDestino() {
+		return destino;
 	}
 
-	public void setDest(Localizacion dest) {
-		this.dest = dest;
+	public void setDestino(Localizacion destino) {
+		this.destino = destino;
 	}
-	
+
 }

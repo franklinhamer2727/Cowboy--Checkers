@@ -1,4 +1,4 @@
-package cowboychechers.main;
+package cowboycheckers.main;
 
 public class CowboyCheckers {
 }
