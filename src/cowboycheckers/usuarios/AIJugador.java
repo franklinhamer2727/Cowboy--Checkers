@@ -9,33 +9,33 @@ import cowboycheckers.modelo.Localizacion;
 
 public class AIJugador extends Jugador {
 
-	public static final String[] colors = {"Black", "Red", "Blue", "Gray", "Green"};
-	private ControladorJuego nmm;
+	public static final String[] colores = {"Black", "Red", "Blue", "Gray", "Green"};
+	private ControladorJuego controladorJuego;
 	public static Random R;
 
 	public AIJugador(String name, String color) {
-		super(name, chooseRandomColor(color));
+		super(name, escogerColorAleatorio(color));
 
 	}
 
-	private static String chooseRandomColor(String color) {
+	private static String escogerColorAleatorio(String color) {
 		R = new Random();
 		int i = R.nextInt() % 5;
 		while(i < 0 || i > 4)
 			i = R.nextInt() % 5;
-		if(AIJugador.colors[i] != null){
-			return AIJugador.colors[i].toLowerCase();
+		if(AIJugador.colores[i] != null){
+			return AIJugador.colores[i].toLowerCase();
 		}
 		return color;
 	}
 
 
-	public String newMove(){
+	public String newMovimiento(){
 		return "A";
 	}
 
 	@Override
-	public boolean isHuman(){
+	public boolean esHumano(){
 		return false;
 	}
 
@@ -44,34 +44,34 @@ public class AIJugador extends Jugador {
 		while(i < 0 || i > 24){
 			i = R.nextInt() % 24;
 		}
-		char move = Tablero.ALPHABET[i];
-		while(!this.nmm.newMove(String.valueOf(move))){
+		char move = Tablero.ALFABETO[i];
+		while(!this.controladorJuego.newMovimiento(String.valueOf(move))){
 			i = R.nextInt() % 24;
 			while(i < 0 || i > 24){
 				i = R.nextInt() % 24;
 			}
-			move = Tablero.ALPHABET[i];;
+			move = Tablero.ALFABETO[i];;
 		}
 		return true;
 	}
 
 	public boolean moveMove() {
-		for(JugarPieza p : this.getPieces()){
-			Localizacion t = this.nmm.getBoard().GetPieceLocation(p);
+		for(JugarPieza p : this.getPiezas()){
+			Localizacion t = this.controladorJuego.getTablero().getLocalizacionPieza(p);
 
-			for(char lab: Tablero.ALPHABET){
-				Localizacion newLoc = this.nmm.getBoard().GetLocationByLabel(String.valueOf(lab));
+			for(char lab: Tablero.ALFABETO){
+				Localizacion newLoc = this.controladorJuego.getTablero().getLocacionByEtiqueta(String.valueOf(lab));
 				if(t == newLoc)
 					continue;
-				if(!newLoc.ContainsPieza(null))
+				if(!newLoc.contienePieza(null))
 					continue;
-				if(this.nmm.getBoard().AreNeighbors(t, newLoc)){
-					this.nmm.setSelected(p);
-					if(this.nmm.newMove(newLoc.getEtiqueta())){
+				if(this.controladorJuego.getTablero().esVecino(t, newLoc)){
+					this.controladorJuego.setSelecccionado(p);
+					if(this.controladorJuego.newMovimiento(newLoc.getEtiqueta())){
 						return true;
 					}
 					else{
-						this.nmm.clearSelected();
+						this.controladorJuego.limpiarSeleccionado();
 					}
 				}
 
@@ -81,10 +81,10 @@ public class AIJugador extends Jugador {
 	}
 
 	public boolean remoMove() {
-		Jugador p = this.nmm.getPlayer1();
-		for(JugarPieza gp: p.getPieces()){
-			if(gp.IsAlive() && gp.getEstado() != JugarPieza.NOPOSICIONADO){
-				if(this.nmm.newMove(this.nmm.getBoard().GetPieceLocation(gp).getEtiqueta())){
+		Jugador p = this.controladorJuego.getJugador1();
+		for(JugarPieza gp: p.getPiezas()){
+			if(gp.estaVivo() && gp.getEstado() != JugarPieza.NOPOSICIONADO){
+				if(this.controladorJuego.newMovimiento(this.controladorJuego.getTablero().getLocalizacionPieza(gp).getEtiqueta())){
 					return true;
 				}
 			}
@@ -92,12 +92,12 @@ public class AIJugador extends Jugador {
 		return false;
 	}
 
-	public void setNmm(ControladorJuego nmm) {
-		this.nmm = nmm;
+	public void setControlador(ControladorJuego controladorJuego) {
+		this.controladorJuego = controladorJuego;
 	}
 
-	public ControladorJuego getNmm() {
-		return nmm;
+	public ControladorJuego getControladorJuego() {
+		return controladorJuego;
 	}
 
 }
