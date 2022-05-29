@@ -15,14 +15,14 @@ public class Arista implements Comparable<Arista>
 		alineacion = -1;
 	}
 
-	public Arista(String etiq, Localizacion loc1, Localizacion loc2, int align)
+	public Arista(String etiq, Localizacion loc1, Localizacion loc2, int alineacion)
 	{
-		etiqueta = etiq;
-		localizacion1 = loc1;
-		localizacion2 = loc2;
-		alineacion = align;
+		this.etiqueta = etiq;
+		this.localizacion1 = loc1;
+		this.localizacion2 = loc2;
+		this.alineacion = alineacion;
 	}
-	
+
 	public Arista(Arista e) {}
 
 	public String getEtiqueta()
@@ -35,7 +35,7 @@ public class Arista implements Comparable<Arista>
 		return this.alineacion;
 	}
 
-	public boolean HasLocation(Localizacion loc)
+	public boolean tieneUbicacion(Localizacion loc)
 	{
 		if (localizacion1 == loc || localizacion2 == loc)
 			return true;
@@ -43,7 +43,7 @@ public class Arista implements Comparable<Arista>
 			return false;
 	}
 
-	public Localizacion GetOpposite(Localizacion loc)
+	public Localizacion getOpuesto(Localizacion loc)
 	{
 		if (loc == localizacion1)
 			return localizacion2;
