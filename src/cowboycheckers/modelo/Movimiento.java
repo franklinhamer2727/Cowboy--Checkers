@@ -20,38 +20,38 @@ public class Movimiento {
 		this.setDestino(B);
 		this.convToCart(A);
 		this.convToCart(B);
-		this.calcChange();
+		this.calcCambio();
 	}
 
 	private void convToCart(Localizacion loc) {
-		char[] labels = Tablero.ALPHABET;
-		String[] points = Tablero.BOARDREFERENCE;
+		char[] labels = Tablero.ALFABETO;
+		String[] puntos = Tablero.REFERENCIA_TABLA;
 
-		int found = 0;
+		int buscado = 0;
 		for(int i=0; i<24; i++){
 			if(loc.equal(labels[i])){
-				found = i;
+				buscado = i;
 			}
 		}
 
-		String t[] = points[found].split(",");
+		String t[] = puntos[buscado].split(",");
 		int row = Integer.parseInt(t[0]);
 		int col = Integer.parseInt(t[1]);
 
 		if(loc == this.origen){
-			this.x1 = col * GamePanel.CELL_SIZE+25;
-			this.y1 = row * GamePanel.CELL_SIZE+25;
+			this.x1 = col * GamePanel.CELDA_SIZE+25;
+			this.y1 = row * GamePanel.CELDA_SIZE+25;
 			this.curX = this.x1;
 			this.curY = this.y1;
 		}
 		else{
-			this.x2 = col * GamePanel.CELL_SIZE+25;
-			this.y2 = row * GamePanel.CELL_SIZE+25;
+			this.x2 = col * GamePanel.CELDA_SIZE+25;
+			this.y2 = row * GamePanel.CELDA_SIZE+25;
 		}
 
 	}
 
-	private void calcChange() {
+	private void calcCambio() {
 		this.dx = (this.x2 - this.x1) / 50.f;
 		this.dy = (this.y2 - this.y1) / 50.f;
 	}
