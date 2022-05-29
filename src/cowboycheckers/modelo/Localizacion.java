@@ -25,7 +25,7 @@ public class Localizacion implements Comparable<Localizacion> {
 		return etiqueta;
 	}
 
-	public boolean ContainsPieza(JugarPieza pieza)
+	public boolean contienePieza(JugarPieza pieza)
 	{
 		if (this.getPieza() == pieza)
 			return true;
