@@ -16,6 +16,7 @@ public class ControladorJuego {
     }        
     
     public int getStatus() {
+        return this.currTablero.getFaseActual(this.curPlayer);
     }
   
     public boolean newMovimiento(String label) {
@@ -25,15 +26,38 @@ public class ControladorJuego {
     }
   
     private boolean selectPiece(String label) {
+        Localizacion t = this.currTablero.getLocacionByEtiqueta(label);
+        if (t.getPieza() != null && t.getPieza().getOwner() == this.curPlayer) {
+            this.pieceSelected = t.getPieza();
+            this.pieceSelected.seleccionar(true);
+            return true;
+        } else {
+            return false;
+        }        
     }
   
     private boolean RemovalPhase(String label) {
+        Localizacion t = this.currTablero.getLocacionByEtiqueta(label);
+        boolean v = true;
+        if (t.getPieza().getOwner() != this.inactivePlayer()) {
+            v = false;
+        }
+
+        return this.currTablero.removerPieza(this.inactivePlayer(), t.getPieza().getID(), v);        
     }
   
     private boolean PlacementPhase(String label) {
+        Localizacion t = this.currTablero.getLocacionByEtiqueta(label);
+        return this.currTablero.lugarPieza(this.curPlayer, 8 - this.curPlayer.getPiezasJugadas(), t.getEtiqueta());
     }
   
     private boolean MovementPhase(String label) {
+        if (this.currTablero.numMovimientosDisponibles(this.curPlayer) == 0 && this.curPlayer.getPuntuacion() > 3) {
+            return true;
+        } else {
+            Localizacion t = this.currTablero.getLocacionByEtiqueta(label);
+            return this.currTablero.moverPieza(this.curPlayer, this.pieceSelected.getID(), t.getEtiqueta());
+        }
     }
   
     public Jugador getVictor() {
@@ -85,6 +109,33 @@ public class ControladorJuego {
     }  
 
     public String getPhaseText() {
+        if (this.gameMode == 0 && !this.curPlayer.esHumano()) {
+            if (this.currTablero.getFaseActual(this.getCurrPlayer()) == 0) {
+                return "La computadora está colocando una pieza en el tablero.";
+            }
+
+            if (this.currTablero.getFaseActual(this.getCurrPlayer()) == 1) {
+                return "La computadora está moviendo una pieza en el tablero.";
+            }
+
+            if (this.currTablero.getFaseActual(this.getCurrPlayer()) == 2) {
+                return "La computadora está quitando una de tu pieza";
+            }
+        } else {
+            if (this.currTablero.getFaseActual(this.getCurrPlayer()) == 0) {
+                return "Coloca una pieza en el tablero";
+            }
+
+            if (this.currTablero.getFaseActual(this.getCurrPlayer()) == 1) {
+                return "Mueve una de tus piezas en el tablero";
+            }
+
+            if (this.currTablero.getFaseActual(this.getCurrPlayer()) == 2) {
+                return "Quita una de las piezas de tu oponente";
+            }
+        }
+
+        return "";        
     }
   
     public boolean isMoving() {
