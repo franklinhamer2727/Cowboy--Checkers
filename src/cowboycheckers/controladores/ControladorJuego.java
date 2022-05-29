@@ -37,53 +37,69 @@ public class ControladorJuego {
     }
   
     public Jugador getVictor() {
+        return this.Victor;
     }
   
     public Jugador getLoser() {
+        return this.Loser;
     }
   
     private void nextPlayer() {
+        this.curPlayer = this.inactivePlayer();
     }
   
     private Jugador inactivePlayer() {
+        return this.curPlayer == this.p1 ? this.p2 : this.p1;
     }
   
     public Jugador getCurrPlayer() {
+        return this.curPlayer;
     }
     
     public void setGamePhase(Integer mode) {
+        this.currTablero.setFaseActual(mode);
     }
   
     public Integer getMode() {
+        return this.gameMode;
     }
   
     public Jugador getJugador1() {
+        return this.p1;
     }  
 
     public Jugador getPlayer2() {
+        return this.p2;
     }
   
     public Tablero getTablero() {
+        return this.currTablero;
     }
   
     public void setPlayer1(Jugador p) {
+        this.p1 = p;
     }  
 
     public void setPlayer2(Jugador p) {
+        this.p2 = p;
     }  
 
     public String getPhaseText() {
     }
   
     public boolean isMoving() {
+        return this.moving;
     }
   
     public void setMoving(boolean mov) {
+        this.moving = mov;
     }
   
     public void setSelecccionado(JugarPieza p) {
+        this.pieceSelected = p;
     }
   
     public void limpiarSeleccionado() {
+        this.pieceSelected = null;
     }    
 }
