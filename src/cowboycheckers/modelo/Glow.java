@@ -1,13 +1,13 @@
 package cowboycheckers.modelo;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class Glow {
 	private double x;
 	private double y;
 	private Color c;
 	private boolean decrecer;
-	
+
 	public Glow(){
 		this.x = 35;
 		this.y = 35;
