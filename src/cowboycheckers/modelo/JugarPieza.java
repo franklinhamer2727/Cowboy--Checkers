@@ -45,14 +45,14 @@ public class JugarPieza implements Comparable<JugarPieza>
 		return this.seleccionado;
 	}
 
-	public void select(boolean seleccionado){
+	public void seleccionar(boolean seleccionado){
 		this.seleccionado = seleccionado;
 		if(!seleccionado){
 			this.gl = new Glow();
 		}
 	}
 
-	public boolean IsAlive()
+	public boolean estaVivo()
 	{
 		if (this.estado != MUERTO)
 			return true;
