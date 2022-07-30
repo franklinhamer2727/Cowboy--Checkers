@@ -7,6 +7,30 @@ import cowboycheckers.modelo.Tablero;
 import cowboycheckers.modelo.JugarPieza;
 import cowboycheckers.modelo.Localizacion;
 
+/**
+ * Autor: @FranklinHamer
+ * Descripción: Cowboy Checker implementa una clase llamada IaJugador la cual desarrolla
+ * una funcionalidad de simular el comportamiento de un jugador virtual para el inicio de
+ * una nueva partida
+ * clase HIJA IAJugador de Jugador
+ * Clase que es llamada desde Controlador llamado ControladorJuego
+ * Usa los paquetes
+ * 		java.util.Random()
+ * 		java.lang.String()
+ * Atributos:
+ *		name
+ *		color
+ *Métodos que retornan valores Boleanos
+ * 		esHumano()
+ * 		placeMove()
+ * 		moveMove()
+ * 		remoMove()
+ * Método que captura nuevo movimiento:
+ * 		newMovimiento(): String
+ *Peticiones  get and set del controlador son:
+ * 		setControlador(): void
+ * 		getControladorJuego() ControladorJuego
+ */
 public class AIJugador extends Jugador {
 
 	public static final String[] colores = { "Black", "Red", "Blue", "Gray", "Green" };
