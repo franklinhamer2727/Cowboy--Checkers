@@ -1,5 +1,28 @@
 package cowboycheckers.modelo;
-
+/**
+ * Autor: @FranklinHamer
+ * Descripción: Cowboy Checker implementa una clase llamada Localizaciónm esta clase nos permite conocer la posición de las fichas
+ * dentro del tablero.
+ *
+ * Clase padre de Jugador
+ * Usa los paquetes
+ * 		java.lang.Comparable.<cowboycheckers.modelo.Localizacion>
+ * 		java.lang.String
+ * Atributos Publicos:
+ * Atributos Privados:
+ * 		pieza
+ * 		etiqueta
+ *Métodos implementados
+ * 		getEtiqueta():String
+ * 		contienePieza():boolean
+ * 		RemovePieza(): void
+ * 		setEtiqueta(): void
+ * 		getPieza():	boolean
+ * 		setPieza(): JugarPieza()
+ * 		compareTo(): int
+ * 		toString(): String
+ *
+ */
 public class Localizacion implements Comparable<Localizacion> {
 
 	private String etiqueta;
