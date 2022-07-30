@@ -9,48 +9,40 @@ import cowboycheckers.modelo.Localizacion;
 
 /**
  * Autor: @FranklinHamer
- * Descripción: Cowboy Checker implementa una clase llamada IaJugador la cual desarrolla
- * una funcionalidad de simular el comportamiento de un jugador virtual para el inicio de
+ * Descripción: Cowboy Checker implementa una clase llamada IaJugador la cual
+ * desarrolla
+ * una funcionalidad de simular el comportamiento de un jugador virtual para el
+ * inicio de
  * una nueva partida
  * clase HIJA IAJugador de Jugador
  * Clase que es llamada desde Controlador llamado ControladorJuego
  * Usa los paquetes
- * 		java.util.Random()
- * 		java.lang.String()
+ * java.util.Random()
+ * java.lang.String()
  * Atributos:
- *		name
- *		color
- *Métodos que retornan valores Boleanos
- * 		esHumano()
- * 		placeMove()
- * 		moveMove()
- * 		remoMove()
+ * name
+ * color
+ * Métodos que retornan valores Boleanos
+ * esHumano()
+ * placeMove()
+ * moveMove()
+ * remoMove()
  * Método que captura nuevo movimiento:
- * 		newMovimiento(): String
- *Peticiones  get and set del controlador son:
- * 		setControlador(): void
- * 		getControladorJuego() ControladorJuego
+ * newMovimiento(): String
+ * Peticiones get and set del controlador son:
+ * setControlador(): void
+ * getControladorJuego() ControladorJuego
  */
 public class AIJugador extends Jugador {
 
 	public static final String[] colores = { "Black", "Red", "Blue", "Gray", "Green" };
-	private ControladorJuego controladorJuego;
 	public static Random R;
+	private ControladorJuego controladorJuego;
+	
 
 	public AIJugador(String name, String color) {
 		super(name, escogerColorAleatorio(color));
 
-	}
-
-	private static String escogerColorAleatorio(String color) {
-		R = new Random();
-		int i = R.nextInt() % 5;
-		while (i < 0 || i > 4)
-			i = R.nextInt() % 5;
-		if (AIJugador.colores[i] != null) {
-			return AIJugador.colores[i].toLowerCase();
-		}
-		return color;
 	}
 
 	public String newMovimiento() {
@@ -124,4 +116,14 @@ public class AIJugador extends Jugador {
 		return controladorJuego;
 	}
 
+	private static String escogerColorAleatorio(String color) {
+		R = new Random();
+		int i = R.nextInt() % 5;
+		while (i < 0 || i > 4)
+			i = R.nextInt() % 5;
+		if (AIJugador.colores[i] != null) {
+			return AIJugador.colores[i].toLowerCase();
+		}
+		return color;
+	}
 }

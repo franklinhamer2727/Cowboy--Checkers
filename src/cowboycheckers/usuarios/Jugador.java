@@ -57,18 +57,6 @@ public class Jugador {
 		return null;
 	}
 
-	private void setColor(String color) {
-		Color c = null;
-		try {
-			Field field = Color.class.getField(color.toLowerCase());
-			c = (Color) field.get(null);
-		} catch (Exception e) {
-			c = Color.BLACK; // Not defined
-		}
-
-		this.color = c;
-	}
-
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -103,5 +91,17 @@ public class Jugador {
 
 	public boolean esHumano() {
 		return true;
+	}
+
+	private void setColor(String color) {
+		Color c = null;
+		try {
+			Field field = Color.class.getField(color.toLowerCase());
+			c = (Color) field.get(null);
+		} catch (Exception e) {
+			c = Color.BLACK; // Not defined
+		}
+
+		this.color = c;
 	}
 }
