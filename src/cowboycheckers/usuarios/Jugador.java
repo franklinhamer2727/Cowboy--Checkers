@@ -12,7 +12,7 @@ public class Jugador {
 	private ArrayList<JugarPieza> piezas;
 	final Integer MAXPIEZAS = 9;
 
-	public Jugador(String nombre, String color){
+	public Jugador(String nombre, String color) {
 		this.nombre = nombre;
 		this.setColor(color);
 		this.initPiezas();
@@ -20,26 +20,25 @@ public class Jugador {
 
 	private void initPiezas() {
 		this.piezas = new ArrayList<JugarPieza>(MAXPIEZAS);
-		for(Integer i=0; i<MAXPIEZAS; i++){
+		for (Integer i = 0; i < MAXPIEZAS; i++) {
 			JugarPieza p = new JugarPieza(this.color, this, i);
 			this.piezas.add(p);
 		}
 	}
 
-	public JugarPieza getPieza(int id)
-	{
-		for(int i=0; i < piezas.size(); i++)
+	public JugarPieza getPieza(int id) {
+		for (int i = 0; i < piezas.size(); i++)
 			if (piezas.get(i).getID() == id)
 				return piezas.get(i);
 
 		return null;
 	}
 
-	private void setColor(String color){
+	private void setColor(String color) {
 		Color c = null;
 		try {
 			Field field = Color.class.getField(color.toLowerCase());
-			c = (Color)field.get(null);
+			c = (Color) field.get(null);
 		} catch (Exception e) {
 			c = Color.BLACK; // Not defined
 		}
@@ -62,7 +61,7 @@ public class Jugador {
 	public Integer getPuntuacion() {
 		int curscore = 0;
 
-		for(int i=0; i < piezas.size(); i++)
+		for (int i = 0; i < piezas.size(); i++)
 			if (piezas.get(i).getEstado() != JugarPieza.MUERTO)
 				curscore++;
 
@@ -71,8 +70,7 @@ public class Jugador {
 
 	public int getPiezasJugadas() {
 		int played = 0;
-		for (int i=0; i < piezas.size(); i++)
-		{
+		for (int i = 0; i < piezas.size(); i++) {
 			if (piezas.get(i).getEstado() != JugarPieza.NOPOSICIONADO)
 				played++;
 		}

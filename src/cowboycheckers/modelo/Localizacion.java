@@ -5,14 +5,12 @@ public class Localizacion implements Comparable<Localizacion> {
 	private String etiqueta;
 	private JugarPieza pieza;
 
-	public Localizacion()
-	{
+	public Localizacion() {
 		etiqueta = "NA";
 		pieza = null;
 	}
 
-	public Localizacion(String name)
-	{
+	public Localizacion(String name) {
 		etiqueta = name;
 		pieza = null;
 	}
@@ -25,8 +23,7 @@ public class Localizacion implements Comparable<Localizacion> {
 		return etiqueta;
 	}
 
-	public boolean contienePieza(JugarPieza pieza)
-	{
+	public boolean contienePieza(JugarPieza pieza) {
 		if (this.getPieza() == pieza)
 			return true;
 		else
@@ -34,8 +31,7 @@ public class Localizacion implements Comparable<Localizacion> {
 
 	}
 
-	public void RemovePieza()
-	{
+	public void RemovePieza() {
 		this.setPieza(null);
 	}
 
@@ -43,8 +39,8 @@ public class Localizacion implements Comparable<Localizacion> {
 		this.etiqueta = etiqueta;
 	}
 
-	public boolean equal(char etiqueta){
-		if(this.etiqueta.charAt(0) == etiqueta)
+	public boolean equal(char etiqueta) {
+		if (this.etiqueta.charAt(0) == etiqueta)
 			return true;
 		return false;
 	}
@@ -62,8 +58,7 @@ public class Localizacion implements Comparable<Localizacion> {
 		return this.getEtiqueta().compareTo(loc.getEtiqueta());
 	}
 
-	public String toString()
-	{
+	public String toString() {
 		int id = (this.pieza == null) ? -1 : this.pieza.getID();
 		return this.etiqueta + "<" + id + ">";
 	}

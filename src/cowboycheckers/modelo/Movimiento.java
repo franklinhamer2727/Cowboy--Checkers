@@ -15,7 +15,7 @@ public class Movimiento {
 	private float dx;
 	private float dy;
 
-	public Movimiento(Localizacion A, Localizacion B){
+	public Movimiento(Localizacion A, Localizacion B) {
 		this.origen = A;
 		this.setDestino(B);
 		this.convToCart(A);
@@ -28,8 +28,8 @@ public class Movimiento {
 		String[] puntos = Tablero.REFERENCIA_TABLA;
 
 		int buscado = 0;
-		for(int i=0; i<24; i++){
-			if(loc.equal(labels[i])){
+		for (int i = 0; i < 24; i++) {
+			if (loc.equal(labels[i])) {
 				buscado = i;
 			}
 		}
@@ -38,15 +38,14 @@ public class Movimiento {
 		int row = Integer.parseInt(t[0]);
 		int col = Integer.parseInt(t[1]);
 
-		if(loc == this.origen){
-			this.x1 = col * GamePanel.CELDA_SIZE+25;
-			this.y1 = row * GamePanel.CELDA_SIZE+25;
+		if (loc == this.origen) {
+			this.x1 = col * GamePanel.CELDA_SIZE + 25;
+			this.y1 = row * GamePanel.CELDA_SIZE + 25;
 			this.curX = this.x1;
 			this.curY = this.y1;
-		}
-		else{
-			this.x2 = col * GamePanel.CELDA_SIZE+25;
-			this.y2 = row * GamePanel.CELDA_SIZE+25;
+		} else {
+			this.x2 = col * GamePanel.CELDA_SIZE + 25;
+			this.y2 = row * GamePanel.CELDA_SIZE + 25;
 		}
 
 	}
@@ -72,24 +71,22 @@ public class Movimiento {
 		this.curY = curY;
 	}
 
-	public boolean update(){
+	public boolean update() {
 		this.curX += this.dx;
 		this.curY += this.dy;
 
-		if(this.dx < 0){
-			if(this.curX < this.x2)
+		if (this.dx < 0) {
+			if (this.curX < this.x2)
 				return true;
-		}
-		else if(this.dx > 0)
-			if(this.curX > this.x2)
+		} else if (this.dx > 0)
+			if (this.curX > this.x2)
 				return true;
 
-		if(this.dy < 0){
-			if(this.curY < this.y2)
+		if (this.dy < 0) {
+			if (this.curY < this.y2)
 				return true;
-		}
-		else if(this.dy > 0)
-			if(this.curY > this.y2)
+		} else if (this.dy > 0)
+			if (this.curY > this.y2)
 				return true;
 
 		return false;

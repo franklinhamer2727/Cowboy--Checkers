@@ -4,8 +4,7 @@ import java.awt.Color;
 
 import cowboycheckers.usuarios.Jugador;
 
-public class JugarPieza implements Comparable<JugarPieza>
-{
+public class JugarPieza implements Comparable<JugarPieza> {
 	private Color color;
 	private Jugador owner;
 	private Integer estado;
@@ -20,12 +19,11 @@ public class JugarPieza implements Comparable<JugarPieza>
 	public static final int MOVIDO = 2;
 	public static final int MUERTO = 3;
 
-	public JugarPieza(Color color, Jugador owner){
+	public JugarPieza(Color color, Jugador owner) {
 		this(color, owner, -1);
 	}
 
-	public JugarPieza(Color color, Jugador owner, int id)
-	{
+	public JugarPieza(Color color, Jugador owner, int id) {
 		this.color = color;
 		this.owner = owner;
 		this.estado = 0;
@@ -41,19 +39,18 @@ public class JugarPieza implements Comparable<JugarPieza>
 		this.gl = gamePiece.gl;
 	}
 
-	public boolean getSeleccionado(){
+	public boolean getSeleccionado() {
 		return this.seleccionado;
 	}
 
-	public void seleccionar(boolean seleccionado){
+	public void seleccionar(boolean seleccionado) {
 		this.seleccionado = seleccionado;
-		if(!seleccionado){
+		if (!seleccionado) {
 			this.gl = new Glow();
 		}
 	}
 
-	public boolean estaVivo()
-	{
+	public boolean estaVivo() {
 		if (this.estado != MUERTO)
 			return true;
 		else
@@ -77,8 +74,7 @@ public class JugarPieza implements Comparable<JugarPieza>
 	}
 
 	@Override
-	public int compareTo(JugarPieza otherPiece)
-	{
+	public int compareTo(JugarPieza otherPiece) {
 		return this.id - otherPiece.getID();
 	}
 
@@ -86,8 +82,7 @@ public class JugarPieza implements Comparable<JugarPieza>
 		return id;
 	}
 
-	public boolean inPlay()
-	{
+	public boolean inPlay() {
 		if (estado == POSICIONADO || estado == MOVIDO)
 			return true;
 		else
@@ -115,7 +110,7 @@ public class JugarPieza implements Comparable<JugarPieza>
 	}
 
 	public void setMv(Movimiento mv) {
-		if(mv == null)
+		if (mv == null)
 			this.mv = null;
 		else
 			this.mv = mv;
