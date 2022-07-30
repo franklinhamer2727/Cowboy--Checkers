@@ -4,6 +4,30 @@ import java.awt.Color;
 
 import cowboycheckers.usuarios.Jugador;
 
+
+/**
+ * Autor: @FranklinHamer
+ * Descripción: Cowboy Checker implementa una clase llamado JugarPieza la cual cumple con una serie de
+ * métodos que nos permite localizar la posición actual de la ficha y darle una nueva posición, se usa una interfaz comparable
+ * para ordenar los objetos(fichas)
+ *
+ * Clase padre de Jugador
+ * Usa los paquetes
+ * Atributos Públicos:
+ *
+ * Atributos Privados:
+ * 		dy,dx,curY,curX,y2,x2,y1,x1,destino,origen
+ *Métodos implementados
+ * 		calCambio()
+ * 		getCurX()
+ * 		getCurY()
+ * 		setCurY()
+ * 		update()
+ * 		getDestino():	Localización
+ * 		setDestino()
+ * 		setCurX()
+ *
+ */
 public class JugarPieza implements Comparable<JugarPieza> {
 	private Color color;
 	private Jugador owner;
@@ -51,10 +75,7 @@ public class JugarPieza implements Comparable<JugarPieza> {
 	}
 
 	public boolean estaVivo() {
-		if (this.estado != MUERTO)
-			return true;
-		else
-			return false;
+		return this.estado != MUERTO;
 	}
 
 	public Integer getEstado() {
