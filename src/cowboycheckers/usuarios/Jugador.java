@@ -3,7 +3,30 @@ package cowboycheckers.usuarios;
 import java.awt.Color;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-
+/**
+ * Autor: @FranklinHamer
+ * Descripción: Cowboy Checker implementa una clase llamada Jugador la cual nos permite crear los perfiles
+ * de jugadores, esta clase implementa un método getPieza la cual nos permite asignar las piezas al jugador nuevo
+ *
+ * Clase padre de Jugador
+ * Usa los paquetes
+ * 		java.awt.Color
+ * 		java.lang.Integer
+ * Atributos Publicos:
+ * Atributos Privados:
+ * 		MAXPIEZAS
+ * 		piezas
+ * 		color
+ * 		nombre
+ *Métodos implementados
+ * 		initPiezas()
+ * 		getPiezas(): JugarPiezas()
+ * 		setColor():void
+ * 		getPuntuación() Integer
+ * 		getPiezasJugadas(): int
+ * 		esHumano() :boolean
+ *
+ */
 import cowboycheckers.modelo.JugarPieza;
 
 public class Jugador {
