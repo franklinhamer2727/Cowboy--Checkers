@@ -28,6 +28,7 @@ public class GamePanel extends JPanel implements MouseListener, ActionListener{
 	private ControladorJuego gameModel;
 	private JuegoTablero gb;
 
+	// agregando como algunos comentarios
 
 	public GamePanel(ControladorJuego game, JuegoTablero gb){
 		this.gb = gb;
