@@ -9,7 +9,7 @@ public class VentanaGanador extends JComponent {
 
     /**
      * Pantalla de victoria para
-     * nueve-mens-morris
+     * el juego
      */
 
     private static final long serialVersionUID = 4655939260856856256L;

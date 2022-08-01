@@ -10,7 +10,7 @@ public class NewVentanaJuego extends JPanel {
 
     /**
      * Nueva pantalla de juego
-     * para nueve-mens-morris
+     * para Juego Mil
      */
 
     private static final long serialVersionUID = 2841820904085389198L;

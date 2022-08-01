@@ -16,7 +16,7 @@ public class VentanaInicio extends JComponent {
 
     /**
      * Ventana principal para
-     * nueve-mens-morris
+     * el juego
      */
 
     private static final long serialVersionUID = 5219597153026471980L;
@@ -88,7 +88,7 @@ public class VentanaInicio extends JComponent {
 
     /**
      * Comenzará un nuevo juego dependiendo
-     * en el botón en el que se hizo clic
+     * en el botón en el que se hizo click
      */
 
     private void CambioVentana(ActionEvent evt) {

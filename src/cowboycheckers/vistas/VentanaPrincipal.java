@@ -236,7 +236,7 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
     /***
      * Mostrará la tarjeta que está
      * determinado por la cadena pasada
-     * tarjeta @param
+     * tarjeta
      */
 
     public void changeCard(String card) {
@@ -281,7 +281,6 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
      * Después de la pantalla de bienvenida
      * muestra pantalla para entrar
      * información para un nuevo juego
-     * Modo @param
      */
 
     public void newGame(Integer mode) {
@@ -295,8 +294,7 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
     /***
      * Inicia el juego después de obtener
      * información sobre los juegos
-     * jugadores y el modo
-     * Modo @param
+     * jugadores
      */
 
 

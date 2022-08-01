@@ -14,7 +14,7 @@ public class NewPVP extends JPanel {
 
     /**
      * Nueva pantalla PVP para
-     * nueve-mens-morris
+     * juego MIL
      */
 
     private static final long serialVersionUID = -4800315689039990773L;
