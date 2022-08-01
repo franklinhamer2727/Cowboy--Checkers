@@ -35,95 +35,95 @@ import cowboycheckers.modelo.Localizacion;
  */
 public class AIJugador extends Jugador {
 
-	public static final String[] colores = { "Black", "Red", "Blue", "Gray", "Green" };
-	public static Random R;
-	private ControladorJuego controladorJuego;
-	
+    public static final String[] colores = {"Black", "Red", "Blue", "Gray", "Green"};
+    public static Random R;
+    private ControladorJuego controladorJuego;
 
-	public AIJugador(String name, String color) {
-		super(name, escogerColorAleatorio(color));
 
-	}
+    public AIJugador(String name, String color) {
+        super(name, escogerColorAleatorio(color));
 
-	public String newMovimiento() {
-		return "A";
-	}
+    }
 
-	@Override
-	public boolean esHumano() {
-		return false;
-	}
+    public String newMovimiento() {
+        return "A";
+    }
 
-	public boolean placeMove() {
-		int i = R.nextInt() % 24;
-		while (i < 0 || i > 24) {
-			i = R.nextInt() % 24;
-		}
-		char move = Tablero.ALFABETO[i];
-		while (!this.controladorJuego.newMovimiento(String.valueOf(move))) {
-			i = R.nextInt() % 24;
-			while (i < 0 || i > 24) {
-				i = R.nextInt() % 24;
-			}
-			move = Tablero.ALFABETO[i];
-			;
-		}
-		return true;
-	}
+    @Override
+    public boolean esHumano() {
+        return false;
+    }
 
-	public boolean moveMove() {
-		for (JugarPieza p : this.getPiezas()) {
-			Localizacion t = this.controladorJuego.getTablero().getLocalizacionPieza(p);
+    public boolean placeMove() {
+        int i = R.nextInt() % 24;
+        while (i < 0 || i > 24) {
+            i = R.nextInt() % 24;
+        }
+        char move = Tablero.ALFABETO[i];
+        while (!this.controladorJuego.newMovimiento(String.valueOf(move))) {
+            i = R.nextInt() % 24;
+            while (i < 0 || i > 24) {
+                i = R.nextInt() % 24;
+            }
+            move = Tablero.ALFABETO[i];
+            ;
+        }
+        return true;
+    }
 
-			for (char lab : Tablero.ALFABETO) {
-				Localizacion newLoc = this.controladorJuego.getTablero().getLocacionByEtiqueta(String.valueOf(lab));
-				if (t == newLoc)
-					continue;
-				if (!newLoc.contienePieza(null))
-					continue;
-				if (this.controladorJuego.getTablero().esVecino(t, newLoc)) {
-					this.controladorJuego.setSelecccionado(p);
-					if (this.controladorJuego.newMovimiento(newLoc.getEtiqueta())) {
-						return true;
-					} else {
-						this.controladorJuego.limpiarSeleccionado();
-					}
-				}
+    public boolean moveMove() {
+        for (JugarPieza p : this.getPiezas()) {
+            Localizacion t = this.controladorJuego.getTablero().getLocalizacionPieza(p);
 
-			}
-		}
-		return false;
-	}
+            for (char lab : Tablero.ALFABETO) {
+                Localizacion newLoc = this.controladorJuego.getTablero().getLocacionByEtiqueta(String.valueOf(lab));
+                if (t == newLoc)
+                    continue;
+                if (!newLoc.contienePieza(null))
+                    continue;
+                if (this.controladorJuego.getTablero().esVecino(t, newLoc)) {
+                    this.controladorJuego.setSelecccionado(p);
+                    if (this.controladorJuego.newMovimiento(newLoc.getEtiqueta())) {
+                        return true;
+                    } else {
+                        this.controladorJuego.limpiarSeleccionado();
+                    }
+                }
 
-	public boolean remoMove() {
-		Jugador p = this.controladorJuego.getJugador1();
-		for (JugarPieza gp : p.getPiezas()) {
-			if (gp.estaVivo() && gp.getEstado() != JugarPieza.NOPOSICIONADO) {
-				if (this.controladorJuego
-						.newMovimiento(this.controladorJuego.getTablero().getLocalizacionPieza(gp).getEtiqueta())) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+            }
+        }
+        return false;
+    }
 
-	public void setControlador(ControladorJuego controladorJuego) {
-		this.controladorJuego = controladorJuego;
-	}
+    public boolean remoMove() {
+        Jugador p = this.controladorJuego.getJugador1();
+        for (JugarPieza gp : p.getPiezas()) {
+            if (gp.estaVivo() && gp.getEstado() != JugarPieza.NOPOSICIONADO) {
+                if (this.controladorJuego
+                        .newMovimiento(this.controladorJuego.getTablero().getLocalizacionPieza(gp).getEtiqueta())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
-	public ControladorJuego getControladorJuego() {
-		return controladorJuego;
-	}
+    public void setControlador(ControladorJuego controladorJuego) {
+        this.controladorJuego = controladorJuego;
+    }
 
-	private static String escogerColorAleatorio(String color) {
-		R = new Random();
-		int i = R.nextInt() % 5;
-		while (i < 0 || i > 4)
-			i = R.nextInt() % 5;
-		if (AIJugador.colores[i] != null) {
-			return AIJugador.colores[i].toLowerCase();
-		}
-		return color;
-	}
+    public ControladorJuego getControladorJuego() {
+        return controladorJuego;
+    }
+
+    private static String escogerColorAleatorio(String color) {
+        R = new Random();
+        int i = R.nextInt() % 5;
+        while (i < 0 || i > 4)
+            i = R.nextInt() % 5;
+        if (AIJugador.colores[i] != null) {
+            return AIJugador.colores[i].toLowerCase();
+        }
+        return color;
+    }
 }

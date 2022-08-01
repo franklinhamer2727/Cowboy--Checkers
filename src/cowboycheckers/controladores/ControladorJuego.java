@@ -24,12 +24,13 @@ public class ControladorJuego {
      * Constructor para ControladorJuego
      * Toma un modo, dos jugadores, y
      * una ventana principal
-     *
+     * <p>
      * Los jugadores son creados por la interfaz gráfica de usuario
      * el modo será determinar si IA
      * está presente
-     *
+     * <p>
      * Mw se trae simplemente para pasar al tablero
+     *
      * @param mode
      * @param p1
      * @param p2
@@ -287,6 +288,7 @@ public class ControladorJuego {
 
     /**
      * Regresará el jugador inactivo
+     *
      * @return
      */
     private Jugador inactivePlayer() {
@@ -307,6 +309,7 @@ public class ControladorJuego {
     /**
      * Establecerá la fase actual
      * al modo pasado
+     *
      * @param mode
      */
     public void setGamePhase(Integer mode) {
@@ -318,6 +321,7 @@ public class ControladorJuego {
      * Actualmente sin usar.
      * Se usará para el modo de juego pve
      * cuando se agregue
+     *
      * @return
      */
     public Integer getMode() {
@@ -350,6 +354,7 @@ public class ControladorJuego {
 
     /**
      * Establecer p1 en el jugador pasado
+     *
      * @param p
      */
     public void setPlayer1(Jugador p) {
@@ -358,6 +363,7 @@ public class ControladorJuego {
 
     /**
      * Establecer p2 en el jugador pasado
+     *
      * @param p
      */
     public void setPlayer2(Jugador p) {

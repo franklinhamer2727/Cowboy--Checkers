@@ -14,6 +14,16 @@ import cowboycheckers.vistas.VentanaPrincipal;
 
 public class Tablero {
 
+    // Fases de juego
+    public static final int FASE_FIN_JUEGO = -1;
+    public static final int FASE_COLOCACION = 0;
+    public static final int FASE_MOVIMIENTO = 1;
+    public static final int FASE_ELIMINACION = 2;
+
+    // Array de letras
+    public static final char[] ALFABETO = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X'};
+    public static final String[] REFERENCIA_TABLA = {"0,0", "0,3", "0,6", "1,1", "1,3", "1,5", "2,2", "2,3", "2,4", "3,0", "3,1", "3,2", "3,4", "3,5", "3,6", "4,2", "4,3", "4,4", "5,1", "5,3", "5,5", "6,0", "6,3", "6,6"};
+
     // Class variables
     private ArrayList<Localizacion> lista_localizacion;
     private ArrayList<Arista> lista_arista;
@@ -23,15 +33,6 @@ public class Tablero {
     private boolean modoTrampa;
     private boolean ignorarMensajes;
 
-    // Game phases
-    public static final int FASE_FIN_JUEGO = -1;
-    public static final int FASE_COLOCACION = 0;
-    public static final int FASE_MOVIMIENTO = 1;
-    public static final int FASE_ELIMINACION = 2;
-
-    // Number to letter array.
-    public static final char[] ALFABETO = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X'};
-    public static final String[] REFERENCIA_TABLA = {"0,0", "0,3", "0,6", "1,1", "1,3", "1,5", "2,2", "2,3", "2,4", "3,0", "3,1", "3,2", "3,4", "3,5", "3,6", "4,2", "4,3", "4,4", "5,1", "5,3", "5,5", "6,0", "6,3", "6,6"};
 
     /***
      * Este constructor recibe una instancia de otro tablero

@@ -30,78 +30,79 @@ import java.util.ArrayList;
 import cowboycheckers.modelo.JugarPieza;
 
 public class Jugador {
-	private String nombre;
-	private Color color;
-	private ArrayList<JugarPieza> piezas;
-	final Integer MAXPIEZAS = 9;
+    final Integer MAXPIEZAS = 9;
 
-	public Jugador(String nombre, String color) {
-		this.nombre = nombre;
-		this.setColor(color);
-		this.initPiezas();
-	}
+    private String nombre;
+    private Color color;
+    private ArrayList<JugarPieza> piezas;
 
-	private void initPiezas() {
-		this.piezas = new ArrayList<JugarPieza>(MAXPIEZAS);
-		for (Integer i = 0; i < MAXPIEZAS; i++) {
-			JugarPieza p = new JugarPieza(this.color, this, i);
-			this.piezas.add(p);
-		}
-	}
+    public Jugador(String nombre, String color) {
+        this.nombre = nombre;
+        this.setColor(color);
+        this.initPiezas();
+    }
 
-	public JugarPieza getPieza(int id) {
-		for (int i = 0; i < piezas.size(); i++)
-			if (piezas.get(i).getID() == id)
-				return piezas.get(i);
+    private void initPiezas() {
+        this.piezas = new ArrayList<JugarPieza>(MAXPIEZAS);
+        for (Integer i = 0; i < MAXPIEZAS; i++) {
+            JugarPieza p = new JugarPieza(this.color, this, i);
+            this.piezas.add(p);
+        }
+    }
 
-		return null;
-	}
+    public JugarPieza getPieza(int id) {
+        for (int i = 0; i < piezas.size(); i++)
+            if (piezas.get(i).getID() == id)
+                return piezas.get(i);
 
-	public String getNombre() {
-		return this.nombre;
-	}
+        return null;
+    }
 
-	public Color getColor() {
-		return this.color;
-	}
+    public String getNombre() {
+        return this.nombre;
+    }
 
-	public ArrayList<JugarPieza> getPiezas() {
-		return this.piezas;
-	}
+    public Color getColor() {
+        return this.color;
+    }
 
-	public Integer getPuntuacion() {
-		int curscore = 0;
+    public ArrayList<JugarPieza> getPiezas() {
+        return this.piezas;
+    }
 
-		for (int i = 0; i < piezas.size(); i++)
-			if (piezas.get(i).getEstado() != JugarPieza.MUERTO)
-				curscore++;
+    public Integer getPuntuacion() {
+        int curscore = 0;
 
-		return curscore;
-	}
+        for (int i = 0; i < piezas.size(); i++)
+            if (piezas.get(i).getEstado() != JugarPieza.MUERTO)
+                curscore++;
 
-	public int getPiezasJugadas() {
-		int played = 0;
-		for (int i = 0; i < piezas.size(); i++) {
-			if (piezas.get(i).getEstado() != JugarPieza.NOPOSICIONADO)
-				played++;
-		}
+        return curscore;
+    }
 
-		return played;
-	}
+    public int getPiezasJugadas() {
+        int played = 0;
+        for (int i = 0; i < piezas.size(); i++) {
+            if (piezas.get(i).getEstado() != JugarPieza.NOPOSICIONADO)
+                played++;
+        }
 
-	public boolean esHumano() {
-		return true;
-	}
+        return played;
+    }
 
-	private void setColor(String color) {
-		Color c = null;
-		try {
-			Field field = Color.class.getField(color.toLowerCase());
-			c = (Color) field.get(null);
-		} catch (Exception e) {
-			c = Color.BLACK; // Not defined
-		}
+    public boolean esHumano() {
+        return true;
+    }
 
-		this.color = c;
-	}
+    private void setColor(String color) {
+        Color c = null;
+        try {
+            Field field = Color.class.getField(color.toLowerCase());
+            c = (Color) field.get(null);
+        } catch (Exception e) {
+            c = Color.BLACK; // Not defined
+        }
+
+        this.color = c;
+    }
 }
