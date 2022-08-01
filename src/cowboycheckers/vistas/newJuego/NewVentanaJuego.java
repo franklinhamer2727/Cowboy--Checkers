@@ -8,7 +8,6 @@ import cowboycheckers.vistas.VentanaPrincipal;
 
 public class NewVentanaJuego extends JPanel{
 
-
 	private static final long serialVersionUID = 2841820904085389198L;
 	private VentanaPrincipal mw;
 	private NewPVP pvp;

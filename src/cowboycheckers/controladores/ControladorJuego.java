@@ -8,8 +8,6 @@ import cowboycheckers.usuarios.Jugador;
 
 import cowboycheckers.vistas.VentanaPrincipal;
 
-
-
 public class ControladorJuego {
     private Tablero currTablero;
     private Jugador p1;
@@ -26,22 +24,21 @@ public class ControladorJuego {
         this.gameMode = mode;
         this.currTablero = new Tablero(mw);
         this.p1 = p1;
-        if(this.gameMode == 0){
+        if (this.gameMode == 0) {
             this.comp = (AIJugador) p2;
             this.comp.setControlador(this);
             this.p2 = p2;
-        }
-        else
+        } else
             this.p2 = p2;
 
         double t;
         t = Math.random() * 50;
-        if(t <= 25.000)
+        if (t <= 25.000)
             this.curPlayer = this.p1;
         else
             this.curPlayer = this.p2;
 
-        if(this.gameMode == 0){
+        if (this.gameMode == 0) {
             this.curPlayer = this.p1;
         }
         this.Victor = p1;
@@ -55,17 +52,16 @@ public class ControladorJuego {
 
     public boolean newMovimiento(String label) {
         int gamephase = this.currTablero.getFaseActual(this.curPlayer);
-        if(gamephase == Tablero.FASE_FIN_JUEGO){
+        if (gamephase == Tablero.FASE_FIN_JUEGO) {
             return true;
         }
-        if(this.currTablero.numMovimientosDisponibles(this.curPlayer) <= 0 && gamephase != Tablero.FASE_COLOCACION){
+        if (this.currTablero.numMovimientosDisponibles(this.curPlayer) <= 0 && gamephase != Tablero.FASE_COLOCACION) {
             this.Victor = this.inactivePlayer();
             this.Loser = this.curPlayer;
             this.currTablero.setFaseActual(Tablero.FASE_FIN_JUEGO);
             this.currTablero.newMensajeError(this.Loser + " no tiene más movimientos disponibles, pierde el juego", 1500);
         }
-        switch(gamephase)
-        {
+        switch (gamephase) {
             case Tablero.FASE_COLOCACION:
                 if (PlacementPhase(label))
                     nextPlayer();
@@ -74,36 +70,33 @@ public class ControladorJuego {
                 break;
 
             case Tablero.FASE_MOVIMIENTO:
-                if(this.pieceSelected == null)
+                if (this.pieceSelected == null)
                     selectPiece(label);
-                else if(this.pieceSelected != null){
-                    if(this.pieceSelected == this.currTablero.getLocacionByEtiqueta(label).getPieza()){
+                else if (this.pieceSelected != null) {
+                    if (this.pieceSelected == this.currTablero.getLocacionByEtiqueta(label).getPieza()) {
                         this.pieceSelected.seleccionar(false);
                         this.pieceSelected = null;
-                    }
-                    else if(MovementPhase(label)){
+                    } else if (MovementPhase(label)) {
                         nextPlayer();
                         this.pieceSelected.seleccionar(false);
                         this.pieceSelected = null;
                         this.moving = true;
-                    }else{
-                        if(this.currTablero.getFaseActual(this.curPlayer) == Tablero.FASE_ELIMINACION){
+                    } else {
+                        if (this.currTablero.getFaseActual(this.curPlayer) == Tablero.FASE_ELIMINACION) {
                             this.pieceSelected.seleccionar(false);
                             this.pieceSelected = null;
                             this.moving = true;
                         }
                     }
-                }
-                else
+                } else
                     return false;
                 break;
 
             case Tablero.FASE_ELIMINACION:
                 boolean passed = RemovalPhase(label);
-                if(passed)
+                if (passed)
                     nextPlayer();
-                else
-                if(this.currTablero.getFaseActual(this.inactivePlayer()) == Tablero.FASE_FIN_JUEGO){
+                else if (this.currTablero.getFaseActual(this.inactivePlayer()) == Tablero.FASE_FIN_JUEGO) {
                     this.Victor = this.curPlayer;
                     this.Loser = this.inactivePlayer();
                     try {
@@ -113,8 +106,7 @@ public class ControladorJuego {
                         e.printStackTrace();
                     }
                     return true;
-                }
-                else
+                } else
                     return false;
                 break;
 
@@ -129,17 +121,16 @@ public class ControladorJuego {
     }
 
     public boolean newAIMove() {
-        if(this.curPlayer.esHumano())
+        if (this.curPlayer.esHumano())
             return false;
         AIJugador p = (AIJugador) this.curPlayer;
 
         int gamephase = this.currTablero.getFaseActual(this.curPlayer);
-        if(gamephase == Tablero.FASE_FIN_JUEGO){
+        if (gamephase == Tablero.FASE_FIN_JUEGO) {
             return true;
         }
         boolean success = true;
-        switch(gamephase)
-        {
+        switch (gamephase) {
             case Tablero.FASE_COLOCACION:
                 success = p.placeMove();
                 try {
@@ -249,20 +240,19 @@ public class ControladorJuego {
     }
 
     public String getPhaseText() {
-        if(this.gameMode == 0 && !this.curPlayer.esHumano()){
-            if(this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_COLOCACION)
+        if (this.gameMode == 0 && !this.curPlayer.esHumano()) {
+            if (this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_COLOCACION)
                 return "La computadora está colocando una pieza en el tablero.";
-            else if(this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_MOVIMIENTO)
+            else if (this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_MOVIMIENTO)
                 return "La computadora está moviendo una pieza en el tablero.";
-            else if(this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_ELIMINACION)
+            else if (this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_ELIMINACION)
                 return "La computadora está quitando una de tu pieza";
-        }
-        else{
-            if(this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_COLOCACION)
+        } else {
+            if (this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_COLOCACION)
                 return "Coloca una pieza en el tablero";
-            else if(this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_MOVIMIENTO)
+            else if (this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_MOVIMIENTO)
                 return "Mueve una de tus piezas en el tablero";
-            else if(this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_ELIMINACION)
+            else if (this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_ELIMINACION)
                 return "Quita una de las piezas de tu oponente";
         }
         return "";

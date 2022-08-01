@@ -273,7 +273,6 @@ public class Tablero {
 
 		}
 
-
 		curLoc.setPieza(null);
 		curPieza.setEstado(JugarPieza.MUERTO);
 		int puntuacion = jugador.getPuntuacion();
@@ -335,7 +334,6 @@ public class Tablero {
 			return 3;
 		else
 			return 0;
-
 	}
 
 	public boolean esVecino(Localizacion loc1, Localizacion loc2)
@@ -388,10 +386,8 @@ public class Tablero {
 		for (int i = 0; i < lista_localizacion.size(); i++)
 			if (lista_localizacion.get(i).contienePieza(piece))
 				return lista_localizacion.get(i);
-
 		return null;
 	}
-
 
 	// ----------------------------------------------------
 	// ----------------------------------------------------
