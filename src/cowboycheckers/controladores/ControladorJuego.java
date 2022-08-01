@@ -20,6 +20,21 @@ public class ControladorJuego {
     private JugarPieza pieceSelected;
     private boolean moving;
 
+    /**
+     * Constructor para ControladorJuego
+     * Toma un modo, dos jugadores, y
+     * una ventana principal
+     *
+     * Los jugadores son creados por la interfaz gráfica de usuario
+     * el modo sera determinar si IA
+     * está presente
+     *
+     * Mw se trae simplemente para pasar a la Junta
+     * @param mode
+     * @param p1
+     * @param p2
+     * @param mw
+     */
     public ControladorJuego(Integer mode, Jugador p1, Jugador p2, VentanaPrincipal mw) {
         this.gameMode = mode;
         this.currTablero = new Tablero(mw);
@@ -45,10 +60,16 @@ public class ControladorJuego {
         this.Loser = p2;
     }
 
-
+    /***
+     * Devolverá el estado del tablero
+     *
+     * Utilizado por la interfaz gráfica de usuario
+     * @return
+     */
     public int getStatus() {
         return this.currTablero.getFaseActual(this.curPlayer);
     }
+
 
     public boolean newMovimiento(String label) {
         int gamephase = this.currTablero.getFaseActual(this.curPlayer);
