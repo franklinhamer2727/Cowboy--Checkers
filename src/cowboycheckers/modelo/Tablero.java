@@ -53,6 +53,24 @@ public class Tablero {
         copiarTablaArray(tab);
     }
 
+    /***
+     * Constructor habitual del tablero, la ventana principal
+     * sirve para actualizar los cambios del tablero en pantalla.
+     * @param mw
+     */
+    public Tablero(VentanaPrincipal mw) {
+        lista_localizacion = new ArrayList<Localizacion>();
+        lista_arista = new ArrayList<Arista>();
+        this.cargarTabla();
+
+        Collections.sort(lista_localizacion);
+
+        this.fase_actual = FASE_COLOCACION;
+        this.tablaArray = newTabla();
+        this.modoTrampa = false;
+        this.mw = mw;
+    }
+
     private void copiarTablaArray(Tablero tab) {
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
@@ -71,24 +89,6 @@ public class Tablero {
         for (Arista e : tab.lista_arista) {
             this.lista_arista.add(new Arista(e));
         }
-    }
-
-    /***
-     * Constructor habitual del tablero, la ventana principal
-     * sirve para actualizar los cambios del tablero en pantalla.
-     * @param mw
-     */
-    public Tablero(VentanaPrincipal mw) {
-        lista_localizacion = new ArrayList<Localizacion>();
-        lista_arista = new ArrayList<Arista>();
-        this.cargarTabla();
-
-        Collections.sort(lista_localizacion);
-
-        this.fase_actual = FASE_COLOCACION;
-        this.tablaArray = newTabla();
-        this.modoTrampa = false;
-        this.mw = mw;
     }
 
     /***
