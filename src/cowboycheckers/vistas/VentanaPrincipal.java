@@ -139,6 +139,13 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
             }
         });
 
+        jMenuItem5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                howToPlay(evt);
+            }
+        });
+
+
         jMenuItem6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 showAbout(evt);
@@ -192,6 +199,7 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
         JOptionPane.showMessageDialog(this, about);
     }
 
+
     /***
      * Mostrará un html
      * página que muestra al usuario cómo jugar
@@ -200,6 +208,13 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
      * nuestras páginas de usuario en lugar de usar
      * un sitio web al azar
      */
+
+    private void howToPlay(ActionEvent evt) {
+        JLabel about = new JLabel();
+        String cadena = new String("Crear Un mil, Colocando 3 fichas del mismo color en una misma raya.");
+        about.setText(cadena);
+        JOptionPane.showMessageDialog(this, about);
+    }
 
     private void cheatMode(ActionEvent evt) {
         if (this.nmm == null) {
