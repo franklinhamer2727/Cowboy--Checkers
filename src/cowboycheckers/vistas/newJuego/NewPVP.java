@@ -12,6 +12,11 @@ import javax.swing.JTextField;
 
 public class NewPVP extends JPanel{
 
+	/**
+	 * Nueva pantalla PVP para
+	 * nueve-mens-morris
+	 */
+
 	private static final long serialVersionUID = -4800315689039990773L;
 	private NewVentanaJuego ngs;
 	private JTextField p1Name;
@@ -20,6 +25,11 @@ public class NewPVP extends JPanel{
 	private JTextField p2Color;
 	private JButton startBut;
 
+	/***
+	 * Constructor predeterminado para
+	 * un nuevo juego PVP
+
+	 */
 
 	public NewPVP(NewVentanaJuego ngs){
 		JPanel top = new JPanel();
@@ -109,6 +119,10 @@ public class NewPVP extends JPanel{
 		this.setSize(700,700);
 	}
 
+	/**
+	 * Determina si la entrada del usuario es válida
+	 * si es así comienza el juego
+	 */
 
 	private void start(ActionEvent evt){
 		if(this.getP1Name().length() < 2){
@@ -150,6 +164,10 @@ public class NewPVP extends JPanel{
 		this.ngs.startGame();
 	}
 
+	/**
+	 * Determina si los jugadores ingresaron
+	 * el color es válido
+	 */
 
 	private int checkColor(String c) {
 		Color color;
@@ -166,21 +184,33 @@ public class NewPVP extends JPanel{
 		return 0;
 	}
 
+	/***
+	 * Devuelve el nombre ingresado del jugador 1
+	 */
 
 	public String getP1Name() {
 		return this.p1Name.getText();
 	}
 
+	/***
+	 * Devuelve el color ingresado por el jugador 1
+	 */
 
 	public String getP1Color() {
 		return this.p1Color.getText();
 	}
 
+	/***
+	 * Devuelve el nombre ingresado del jugador 2
+	 */
 
 	public String getP2Name() {
 		return this.p2Name.getText();
 	}
 
+	/***
+	 * Devuelve el color ingresado por el jugador 2
+	 */
 
 	public String getP2Color() {
 		return this.p2Color.getText();
