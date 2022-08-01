@@ -14,6 +14,11 @@ import javax.swing.SwingConstants;
 
 public class VentanaInicio extends JComponent{
 
+    /**
+     * Ventana principal para
+     * nueve-mens-morris
+     */
+
     private static final long serialVersionUID = 5219597153026471980L;
     private VentanaPrincipal mw;
     private JLabel welcome;
@@ -22,6 +27,11 @@ public class VentanaInicio extends JComponent{
     private JPanel top;
     private JPanel bot;
 
+    /***
+     * Constructor para la bienvenida
+     * pantalla
+     * Permite al jugador decidir qué tipo de juego jugar
+     */
 
     public VentanaInicio(VentanaPrincipal mw){
         this.mw = mw;
@@ -75,6 +85,11 @@ public class VentanaInicio extends JComponent{
 
         add(bot);
     }
+
+    /**
+     * Comenzará un nuevo juego dependiendo
+     * en el botón en el que se hizo clic
+     */
 
     private void CambioVentana(ActionEvent evt) {
         if((JButton)evt.getSource() == this.pve)

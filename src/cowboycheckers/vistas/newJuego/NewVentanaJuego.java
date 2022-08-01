@@ -8,6 +8,11 @@ import cowboycheckers.vistas.VentanaPrincipal;
 
 public class NewVentanaJuego extends JPanel{
 
+	/**
+	 * Nueva pantalla de juego
+	 * para nueve-mens-morris
+	 */
+
 	private static final long serialVersionUID = 2841820904085389198L;
 	private VentanaPrincipal mw;
 	private NewPVP pvp;
@@ -15,6 +20,14 @@ public class NewVentanaJuego extends JPanel{
 	private Integer mode;
 	private AIJugador computer;
 
+	/***
+	 * Constructor para NewGameScreen
+	 *
+	 * Determina si el juego es PVE o PVP
+	 * de pasado en modo
+	 *
+	 * Crea AI para el juego si es necesario
+	 */
 
 	public NewVentanaJuego(VentanaPrincipal mw, Integer mode){
 		this.setSize(700,700);
@@ -32,11 +45,21 @@ public class NewVentanaJuego extends JPanel{
 		this.computer = new AIJugador("PC", "Black");
 	}
 
+	/***
+	 * Devuelve el objeto ventana principal
+	 * a las clases NewPVP y NewPVE
+	 *
+	 * Se usa solo para imprimir el diálogo en la pantalla principal
+	 */
 
 	public VentanaPrincipal getMainWindow(){
 		return this.mw;
 	}
 
+	/***
+	 * Comenzará el juego después
+	 * recibir una buena entrada del usuario
+	 */
 
 	public void startGame(){
 		if(this.mode == 0){
@@ -50,6 +73,11 @@ public class NewVentanaJuego extends JPanel{
 		}
 	}
 
+	/**
+	 * Devolverá el componente AI del juego.
+	 * Se crea antes para evitar choques de color.
+	 * con el jugador
+	 */
 
 	public AIJugador getComputer() {
 		return computer;

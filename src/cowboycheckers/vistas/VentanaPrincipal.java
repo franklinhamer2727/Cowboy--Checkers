@@ -27,6 +27,10 @@ import cowboycheckers.vistas.newJuego.NewVentanaJuego;
 
 public class VentanaPrincipal extends JFrame implements WindowListener{
 
+	/**
+	 * Ventana principal para
+	 * nueve-mens-morris
+	 */
 
 	private static final long serialVersionUID = 3638794002119631337L;
 	private CardLayout cards;
@@ -51,6 +55,11 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 	private JMenuItem jMenuItem6;
 	private JMenuItem jMenuItem7;
 
+	/*** Constructor para la ventana principal
+	 * Cargará el estado inicial del
+	 * juego que es la pantalla de bienvenida
+	 *
+	 */
 
 	public VentanaPrincipal(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,6 +94,10 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 		this.setVisible(true);
 	}
 
+	/***
+	 * Crea la barra de menú que
+	 * la ventana principal usará
+	 */
 
 	private void createMenuBar() {
 		jMenuBar1 = new JMenuBar();
@@ -162,6 +175,10 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 
 	}
 
+	/***
+	 * Mostrará información sobre
+	 * la creación del juego
+	 */
 
 	private void showAbout(ActionEvent evt) {
 		JLabel about = new JLabel();
@@ -174,9 +191,14 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 		JOptionPane.showMessageDialog(this, about);
 	}
 
-
-
-
+	/***
+	 * Mostrará un html
+	 * página que muestra al usuario cómo jugar
+	 *
+	 * Se actualizará con uno de
+	 * nuestras páginas de usuario en lugar de usar
+	 * un sitio web al azar
+	 */
 
 	private void cheatMode(ActionEvent evt) {
 		if(this.nmm == null){
@@ -196,6 +218,11 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 
 	}
 
+	/***
+	 * Cuando el usuario selecciona salir
+	 * desde la Barra de Menú o desde la
+	 * pantalla de victoria
+	 */
 
 	public void quit(ActionEvent evt) {
 		int confirm = JOptionPane.showConfirmDialog(this, "Estas seguro?");
@@ -207,11 +234,23 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 			return;
 	}
 
+	/***
+	 * Mostrará la tarjeta que está
+	 * determinado por la cadena pasada
+	 * tarjeta @param
+	 */
 
 	public void changeCard(String card){
 		this.cards.show(cardPanel, card);
 	}
 
+	/***
+	 * Confirmará el usuario quiere
+	 * reiniciar el juego
+	 *
+	 * if So llama a la función clear
+	 * Else vuelve al juego actuar
+	 */
 
 	public void reset(ActionEvent evt){
 		if(evt.getSource() == this.jMenuItem1){
@@ -226,6 +265,11 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 		this.clear();
 	}
 
+	/**
+	 * Crea un nuevo juego por
+	 * establecer tudo en nulo para un
+	 * recreación
+	 */
 
 	private void clear() {
 		this.changeCard("VentanaInicio");
@@ -235,6 +279,12 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 		this.vs = null;
 	}
 
+	/***
+	 * Después de la pantalla de bienvenida
+	 * muestra pantalla para entrar
+	 * información para un nuevo juego
+	 * Modo @param
+	 */
 
 	public void newGame(Integer mode){
 		this.sd = new NewVentanaJuego(this, mode);
@@ -243,6 +293,14 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 		this.setSize(700,700);
 		this.setLocation(0,0);
 	}
+
+	/***
+	 * Inicia el juego después de obtener
+	 * información sobre los juegos
+	 * jugadores y el modo
+	 * Modo @param
+	 */
+
 
 
 	public void startGame(Jugador p1, Jugador p2, Integer mode){
@@ -256,6 +314,10 @@ public class VentanaPrincipal extends JFrame implements WindowListener{
 		this.setLocation(0,0);
 	}
 
+	/***
+	 * Muestra la pantalla de victoria después
+	 * el juego ha terminado
+	 */
 
 	public void showEnd() {
 		this.vs = new VentanaGanador(this, this.nmm.getVictor(), this.nmm.getLoser());
