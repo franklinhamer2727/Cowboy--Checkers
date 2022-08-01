@@ -26,10 +26,10 @@ public class ControladorJuego {
      * una ventana principal
      *
      * Los jugadores son creados por la interfaz gráfica de usuario
-     * el modo sera determinar si IA
+     * el modo será determinar si IA
      * está presente
      *
-     * Mw se trae simplemente para pasar a la Junta
+     * Mw se trae simplemente para pasar al tablero
      * @param mode
      * @param p1
      * @param p2
@@ -260,18 +260,35 @@ public class ControladorJuego {
         }
     }
 
+    /***
+     * Devolverá el ganador del juego
+     * Utilizado en la pantalla de victoria de la interfaz gráfica de usuario
+     * @return
+     */
     public Jugador getVictor() {
         return this.Victor;
     }
 
+    /***
+     * Devolverá el perdedor del juego
+     * Utilizado en la pantalla de victoria de la interfaz gráfica de usuario
+     * @return
+     */
     public Jugador getLoser() {
         return this.Loser;
     }
 
+    /**
+     * Establecerá el siguiente jugador
+     */
     private void nextPlayer() {
         this.curPlayer = this.inactivePlayer();
     }
 
+    /**
+     * Regresará el jugador inactivo
+     * @return
+     */
     private Jugador inactivePlayer() {
         if (this.curPlayer == this.p1)
             return this.p2;
@@ -279,38 +296,82 @@ public class ControladorJuego {
             return this.p1;
     }
 
+    /***
+     * Regresará el jugador actual
+     * @return
+     */
     public Jugador getCurrPlayer() {
         return this.curPlayer;
     }
 
+    /**
+     * Establecerá la fase actual
+     * al modo pasado
+     * @param mode
+     */
     public void setGamePhase(Integer mode) {
         this.currTablero.setFaseActual(mode);
     }
 
+    /**
+     * Obtener el modo de juego
+     * Actualmente sin usar.
+     * Se usará para el modo de juego pve
+     * cuando se agregue
+     * @return
+     */
     public Integer getMode() {
         return this.gameMode;
     }
 
+    /***
+     * regreso de Jugador 1
+     * @return
+     */
     public Jugador getJugador1() {
         return this.p1;
     }
 
+    /***
+     * regreso de Jugador 1
+     * @return
+     */
     public Jugador getPlayer2() {
         return this.p2;
     }
 
+    /***
+     * Devuelve el tablero actual que se está utilizando
+     * @return
+     */
     public Tablero getTablero() {
         return this.currTablero;
     }
 
+    /**
+     * Establecer p1 en el jugador pasado
+     * @param p
+     */
     public void setPlayer1(Jugador p) {
         this.p1 = p;
     }
 
+    /**
+     * Establecer p2 en el jugador pasado
+     * @param p
+     */
     public void setPlayer2(Jugador p) {
         this.p2 = p;
     }
 
+    /***
+     * Esta función devolverá un mensaje
+     * basado en la fase actual del juego
+     *
+     * Se utiliza en la GUI para mostrar que
+     * hacer en la parte superior de la pantalla
+     * @return
+     */
     public String getPhaseText() {
         if (this.gameMode == 0 && !this.curPlayer.esHumano()) {
             if (this.currTablero.getFaseActual(this.getCurrPlayer()) == Tablero.FASE_COLOCACION)
