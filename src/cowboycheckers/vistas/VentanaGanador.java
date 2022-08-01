@@ -7,12 +7,23 @@ import java.awt.event.ActionEvent;
 
 public class VentanaGanador extends JComponent{
 
+    /**
+     * Pantalla de victoria para
+     * nueve-mens-morris
+     */
 
 	private static final long serialVersionUID = 4655939260856856256L;
     private JButton JugarBoton;
     private JButton SalirBoton;
     private VentanaPrincipal mw;
-    
+
+    /***
+     * Constructor predeterminado para el
+     * pantalla de victoria
+     * Muestra el nombre de los ganadores y los perdedores
+     * nombre junto con un mensaje corto
+     * Tiene botones para volver a jugar o salir
+     */
 
 	public VentanaGanador(VentanaPrincipal mw, Jugador victor, Jugador loser) {
 		this.mw = mw;
@@ -73,9 +84,17 @@ public class VentanaGanador extends JComponent{
         
 	}
 
+    /**
+     * Finaliza el programa
+     */
+
 	private void end(ActionEvent evt) {
 		this.mw.quit(evt);		
 	}
+
+    /**
+     * Comienza un nuevo juego
+     */
 
 	private void newGame(ActionEvent evt) {
 		this.mw.reset(evt);
