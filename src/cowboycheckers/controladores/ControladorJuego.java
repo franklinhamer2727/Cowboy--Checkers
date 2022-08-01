@@ -70,7 +70,17 @@ public class ControladorJuego {
         return this.currTablero.getFaseActual(this.curPlayer);
     }
 
-
+    /***
+     * La función principal de ControladorJuego
+     *
+     * Esto verificará en qué fase se encuentra el juego
+     * y determinar la acción correcta de ahí en adelante
+     *
+     * Devolverá falso si ocurre un error
+     * Actualizará el estado del tablero.
+     * @param label
+     * @return
+     */
     public boolean newMovimiento(String label) {
         int gamephase = this.currTablero.getFaseActual(this.curPlayer);
         if (gamephase == Tablero.FASE_FIN_JUEGO) {
@@ -83,14 +93,17 @@ public class ControladorJuego {
             this.currTablero.newMensajeError(this.Loser + " no tiene más movimientos disponibles, pierde el juego", 1500);
         }
         switch (gamephase) {
-            case Tablero.FASE_COLOCACION:
+            case Tablero.FASE_COLOCACION: //colocación
+                // Si la colocación es exitosa, pasa al siguiente jugador.
                 if (PlacementPhase(label))
                     nextPlayer();
                 else
                     return false;
                 break;
 
-            case Tablero.FASE_MOVIMIENTO:
+            case Tablero.FASE_MOVIMIENTO: //movimiento
+                // Siguiente jugador en movimiento exitoso.
+                // Devolverá falso si un movimiento da como resultado un molino, para que el jugador no se salte.
                 if (this.pieceSelected == null)
                     selectPiece(label);
                 else if (this.pieceSelected != null) {
@@ -113,7 +126,7 @@ public class ControladorJuego {
                     return false;
                 break;
 
-            case Tablero.FASE_ELIMINACION:
+            case Tablero.FASE_ELIMINACION: //eliminación
                 boolean passed = RemovalPhase(label);
                 if (passed)
                     nextPlayer();
@@ -123,7 +136,7 @@ public class ControladorJuego {
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
+                        // TODO Bloque catch generado automáticamente
                         e.printStackTrace();
                     }
                     return true;
@@ -141,6 +154,11 @@ public class ControladorJuego {
         return true;
     }
 
+    /***
+     * Se usa para determinar qué tipo de movimiento debe tomar la IA
+     * basado en la fase actual del juego
+     * @return
+     */
     public boolean newAIMove() {
         if (this.curPlayer.esHumano())
             return false;
@@ -174,6 +192,15 @@ public class ControladorJuego {
         return success;
     }
 
+    /***
+     * Seleccionará la pieza actual y actualizará su
+     * estado
+     *
+     * Se utiliza para que la GUI seleccione una pieza
+     * y luego mueve esa pieza
+     * @param label
+     * @return
+     */
     private boolean selectPiece(String label) {
         Localizacion t = this.currTablero.getLocacionByEtiqueta(label);
         if (t.getPieza() != null && t.getPieza().getOwner() == this.curPlayer) {
@@ -185,6 +212,14 @@ public class ControladorJuego {
         }
     }
 
+    /***
+     * Determinará la ubicación y pieza a
+     * eliminar dada la etiqueta
+     *
+     * Luego intentará quitar esa pieza
+     * @param label
+     * @return
+     */
     private boolean RemovalPhase(String label) {
         Localizacion t = this.currTablero.getLocacionByEtiqueta(label);
         boolean v = true;
@@ -195,11 +230,27 @@ public class ControladorJuego {
         return this.currTablero.removerPieza(this.inactivePlayer(), t.getPieza().getID(), v);
     }
 
+    /***
+     * Determinará la ubicación y pieza a
+     * lugar dado la etiqueta
+     *
+     * Luego intentará colocar esa pieza
+     * @param label
+     * @return
+     */
     private boolean PlacementPhase(String label) {
         Localizacion t = this.currTablero.getLocacionByEtiqueta(label);
         return this.currTablero.lugarPieza(this.curPlayer, 8 - this.curPlayer.getPiezasJugadas(), t.getEtiqueta());
     }
 
+    /***
+     *Se determinará la ubicación y pieza a mover
+     * de la etiqueta dada
+     *
+     * Luego intentará mover esa pieza
+     * @param label
+     * @return
+     */
     private boolean MovementPhase(String label) {
         if (this.currTablero.numMovimientosDisponibles(this.curPlayer) == 0 && this.curPlayer.getPuntuacion() > 3) {
             return true;
