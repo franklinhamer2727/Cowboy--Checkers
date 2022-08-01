@@ -5,14 +5,14 @@ import cowboycheckers.usuarios.Jugador;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class VentanaGanador extends JComponent{
+public class VentanaGanador extends JComponent {
 
     /**
      * Pantalla de victoria para
      * nueve-mens-morris
      */
 
-	private static final long serialVersionUID = 4655939260856856256L;
+    private static final long serialVersionUID = 4655939260856856256L;
     private JButton JugarBoton;
     private JButton SalirBoton;
     private VentanaPrincipal mw;
@@ -25,8 +25,8 @@ public class VentanaGanador extends JComponent{
      * Tiene botones para volver a jugar o salir
      */
 
-	public VentanaGanador(VentanaPrincipal mw, Jugador victor, Jugador loser) {
-		this.mw = mw;
+    public VentanaGanador(VentanaPrincipal mw, Jugador victor, Jugador loser) {
+        this.mw = mw;
         JPanel winnerPanel = new JPanel();
         JLabel winnerText = new JLabel();
         JPanel loserPanel = new JPanel();
@@ -81,22 +81,22 @@ public class VentanaGanador extends JComponent{
                 end(evt);
             }
         });
-        
-	}
+
+    }
 
     /**
      * Finaliza el programa
      */
 
-	private void end(ActionEvent evt) {
-		this.mw.quit(evt);		
-	}
+    private void end(ActionEvent evt) {
+        this.mw.quit(evt);
+    }
 
     /**
      * Comienza un nuevo juego
      */
 
-	private void newGame(ActionEvent evt) {
-		this.mw.reset(evt);
-	}
+    private void newGame(ActionEvent evt) {
+        this.mw.reset(evt);
+    }
 }

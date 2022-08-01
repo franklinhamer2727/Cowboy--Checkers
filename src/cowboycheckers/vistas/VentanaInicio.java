@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class VentanaInicio extends JComponent{
+public class VentanaInicio extends JComponent {
 
     /**
      * Ventana principal para
@@ -33,7 +33,7 @@ public class VentanaInicio extends JComponent{
      * Permite al jugador decidir qué tipo de juego jugar
      */
 
-    public VentanaInicio(VentanaPrincipal mw){
+    public VentanaInicio(VentanaPrincipal mw) {
         this.mw = mw;
 
         welcome = new JLabel();
@@ -71,12 +71,12 @@ public class VentanaInicio extends JComponent{
         pvp.setText("Jugador VS Jugador");
 
         pve.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt){
+            public void actionPerformed(ActionEvent evt) {
                 CambioVentana(evt);
             }
         });
         pvp.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt){
+            public void actionPerformed(ActionEvent evt) {
                 CambioVentana(evt);
             }
         });
@@ -92,9 +92,9 @@ public class VentanaInicio extends JComponent{
      */
 
     private void CambioVentana(ActionEvent evt) {
-        if((JButton)evt.getSource() == this.pve)
+        if ((JButton) evt.getSource() == this.pve)
             this.mw.newGame(0);
-        else if((JButton)evt.getSource() == this.pvp)
+        else if ((JButton) evt.getSource() == this.pvp)
             this.mw.newGame(1);
     }
 }

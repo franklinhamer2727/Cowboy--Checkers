@@ -7,21 +7,21 @@ import java.lang.reflect.Field;
 
 public class NewPVE extends JPanel {
 
-	private static final long serialVersionUID = 6048218193452708272L;
-	private NewVentanaJuego ngs;
-	private JTextField p1Nombre;
-	private JTextField p1Color;
-	private JButton startBut;
+    private static final long serialVersionUID = 6048218193452708272L;
+    private NewVentanaJuego ngs;
+    private JTextField p1Nombre;
+    private JTextField p1Color;
+    private JButton startBut;
 
 
-	/***
-	 * Constructor predeterminado
-	 * para un nuevo juego PVE
-	 */
+    /***
+     * Constructor predeterminado
+     * para un nuevo juego PVE
+     */
 
 
-	public NewPVE(NewVentanaJuego ngs) {
-		this.ngs = ngs;
+    public NewPVE(NewVentanaJuego ngs) {
+        this.ngs = ngs;
         JPanel top = new JPanel();
         JLabel message = new JLabel();
         JPanel middle = new JPanel();
@@ -77,89 +77,89 @@ public class NewPVE extends JPanel {
                 start(evt);
             }
         });
-        this.setSize(700,700);
+        this.setSize(700, 700);
 
-	}
-
-
-	/**
-	 * Determina si la entrada del usuario
-	 * es válido y comienza un juego si es así
-	 */
+    }
 
 
-	private void start(ActionEvent evt){
-		if(this.getP1Name().length() < 1){
-			JOptionPane.showMessageDialog(this.ngs.getMainWindow(), " Introduce un nombre válido para Jugador 1\r\n (Debe tener al menos 1 carácter)");
-			return;
-		}
-		if(this.getP1Color().length() < 1){
-			JOptionPane.showMessageDialog(this.ngs.getMainWindow(), "Introduce un color para Jugador 1");
-			return;
-		}
-		int check = checkColor(this.getP1Color());
-		if(check == 1)
-			return;
-		if(getColor(this.getP1Color()).equals(this.ngs.getComputer().getColor())){
-			JOptionPane.showMessageDialog(this.ngs.getMainWindow(), "Elija un color diferente al que eligió la computadora");
-			return;
-		}
-		if(this.getP1Color().equalsIgnoreCase("white")){
-			JOptionPane.showMessageDialog(this.ngs.getMainWindow(), "Por favor, elija un color diferente al blanco.");
-			return;
-		}
-		this.ngs.startGame();
-	}
-
-	/**
-	 * Comprueba si los usuarios ingresaron color
-	 * es un color válido
-	 */
+    /**
+     * Determina si la entrada del usuario
+     * es válido y comienza un juego si es así
+     */
 
 
-	private int checkColor(String c) {
-		Color color;
-		try {
-		    Field field = Color.class.getField(c.toLowerCase());
-		    color = (Color)field.get(null);
-		} catch (Exception e) {
-		    color = null; // Not defined
-		}
-		if(color == null){
-			JOptionPane.showMessageDialog(this.ngs.getMainWindow(), c + " No es un color valido");
-			return 1;
-		}
-		if(color == Color.white){
-			JOptionPane.showMessageDialog(this.ngs.getMainWindow(), "Por favor elija otro color");
-			return 1;
-		}
-		return 0;
-	}
-	
-	public Color getColor(String color){
-		Color c = null;	
-		try {
-		    Field field = Color.class.getField(color.toLowerCase());
-		    c = (Color)field.get(null);
-		} catch (Exception e) {
-		    c = null;
-		}
-		
-		return c;
-	}
+    private void start(ActionEvent evt) {
+        if (this.getP1Name().length() < 1) {
+            JOptionPane.showMessageDialog(this.ngs.getMainWindow(), " Introduce un nombre válido para Jugador 1\r\n (Debe tener al menos 1 carácter)");
+            return;
+        }
+        if (this.getP1Color().length() < 1) {
+            JOptionPane.showMessageDialog(this.ngs.getMainWindow(), "Introduce un color para Jugador 1");
+            return;
+        }
+        int check = checkColor(this.getP1Color());
+        if (check == 1)
+            return;
+        if (getColor(this.getP1Color()).equals(this.ngs.getComputer().getColor())) {
+            JOptionPane.showMessageDialog(this.ngs.getMainWindow(), "Elija un color diferente al que eligió la computadora");
+            return;
+        }
+        if (this.getP1Color().equalsIgnoreCase("white")) {
+            JOptionPane.showMessageDialog(this.ngs.getMainWindow(), "Por favor, elija un color diferente al blanco.");
+            return;
+        }
+        this.ngs.startGame();
+    }
 
-	/***
-	 * Devuelve el nombre del jugador 1
-	 * ingresó
-	 */
+    /**
+     * Comprueba si los usuarios ingresaron color
+     * es un color válido
+     */
 
-	public String getP1Name() {
-		return this.p1Nombre.getText();
-	}
-	
 
-	public String getP1Color() {
-		return this.p1Color.getText();
-	}
+    private int checkColor(String c) {
+        Color color;
+        try {
+            Field field = Color.class.getField(c.toLowerCase());
+            color = (Color) field.get(null);
+        } catch (Exception e) {
+            color = null; // Not defined
+        }
+        if (color == null) {
+            JOptionPane.showMessageDialog(this.ngs.getMainWindow(), c + " No es un color valido");
+            return 1;
+        }
+        if (color == Color.white) {
+            JOptionPane.showMessageDialog(this.ngs.getMainWindow(), "Por favor elija otro color");
+            return 1;
+        }
+        return 0;
+    }
+
+    public Color getColor(String color) {
+        Color c = null;
+        try {
+            Field field = Color.class.getField(color.toLowerCase());
+            c = (Color) field.get(null);
+        } catch (Exception e) {
+            c = null;
+        }
+
+        return c;
+    }
+
+    /***
+     * Devuelve el nombre del jugador 1
+     * ingresó
+     */
+
+    public String getP1Name() {
+        return this.p1Nombre.getText();
+    }
+
+
+    public String getP1Color() {
+        return this.p1Color.getText();
+    }
 
 }
