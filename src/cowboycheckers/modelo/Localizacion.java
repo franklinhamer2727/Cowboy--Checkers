@@ -7,21 +7,21 @@ package cowboycheckers.modelo;
  * <p>
  * Clase padre de Jugador
  * Usa los paquetes
- * java.lang.Comparable.<cowboycheckers.modelo.Localizacion>
- * java.lang.String
+ *      java.lang.Comparable.<cowboycheckers.modelo.Localizacion>
+ *      java.lang.String
  * Atributos Publicos:
  * Atributos Privados:
- * pieza
- * etiqueta
+ *      pieza
+ *      etiqueta
  * Métodos implementados
- * getEtiqueta():String
- * contienePieza():boolean
- * RemovePieza(): void
- * setEtiqueta(): void
- * getPieza():	boolean
- * setPieza(): JugarPieza()
- * compareTo(): int
- * toString(): String
+ *      getEtiqueta():String
+ *      contienePieza():boolean
+ *      RemovePieza(): void
+ *      setEtiqueta(): void
+ *      getPieza():	boolean
+ *      setPieza(): JugarPieza()
+ *      compareTo(): int
+ *      toString(): String
  */
 public class Localizacion implements Comparable<Localizacion> {
 
