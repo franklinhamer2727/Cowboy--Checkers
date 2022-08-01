@@ -14,6 +14,12 @@ public class NewPVE extends JPanel {
 	private JButton startBut;
 
 
+	/***
+	 * Constructor predeterminado
+	 * para un nuevo juego PVE
+	 */
+
+
 	public NewPVE(NewVentanaJuego ngs) {
 		this.ngs = ngs;
         JPanel top = new JPanel();
@@ -72,7 +78,14 @@ public class NewPVE extends JPanel {
             }
         });
         this.setSize(700,700);
+
 	}
+
+
+	/**
+	 * Determina si la entrada del usuario
+	 * es válido y comienza un juego si es así
+	 */
 
 
 	private void start(ActionEvent evt){
@@ -97,7 +110,12 @@ public class NewPVE extends JPanel {
 		}
 		this.ngs.startGame();
 	}
-	
+
+	/**
+	 * Comprueba si los usuarios ingresaron color
+	 * es un color válido
+	 */
+
 
 	private int checkColor(String c) {
 		Color color;
@@ -130,6 +148,10 @@ public class NewPVE extends JPanel {
 		return c;
 	}
 
+	/***
+	 * Devuelve el nombre del jugador 1
+	 * ingresó
+	 */
 
 	public String getP1Name() {
 		return this.p1Nombre.getText();
