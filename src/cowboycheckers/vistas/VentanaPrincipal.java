@@ -190,12 +190,7 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
 
     private void showAbout(ActionEvent evt) {
         JLabel about = new JLabel();
-        about.setText("<html>Creado por:<br>" + "" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Franklin Jara</br><br>" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Diego Vasquez</br><br>" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Abraham Berrospi</br><br>" +
-                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Joel Jimenez</br>" +
-                "<br>Version 1.0</html>");
+        about.setText("<html>Creado por:<br>" + "" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Franklin Jara</br><br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Diego Vasquez</br><br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Abraham Berrospi</br><br>" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Joel Jimenez</br>" + "<br>Version 1.0</html>");
         JOptionPane.showMessageDialog(this, about);
     }
 
@@ -228,8 +223,7 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
         int confirm = JOptionPane.showConfirmDialog(this, "¿Quieres entrar en el modo trampa?");
         if (confirm == 0) {
             this.nmm.getTablero().setModoTrampa();
-        } else
-            return;
+        } else return;
 
     }
 
@@ -244,8 +238,7 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
         if (confirm == 0) {
             this.dispose();
             System.exit(NORMAL);
-        } else
-            return;
+        } else return;
     }
 
     /***
@@ -272,8 +265,7 @@ public class VentanaPrincipal extends JFrame implements WindowListener {
             if (confirm == 0) {
                 this.clear();
 
-            } else
-                return;
+            } else return;
         }
         this.clear();
     }
